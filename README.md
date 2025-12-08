@@ -37,6 +37,10 @@ Proyek ini adalah template Docker untuk Drupal 11, dirancang untuk pengembangan 
     - **User Default**: `admin`
     - **Password Default**: `admin` (dapat dikonfigurasi di `.env`)
 
+### 🔄 Migrasi & Upgrade
+Panduan lengkap untuk upgrade dari Drupal 8/9/10 atau migrasi ke environment ini dapat dilihat di:
+👉 **[Panduan Migrasi & Upgrade (MIGRATION.md)](MIGRATION.md)**
+
 ---
 
 ## 📂 Struktur Proyek & Engines
