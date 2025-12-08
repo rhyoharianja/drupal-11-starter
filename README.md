@@ -41,6 +41,10 @@ Proyek ini adalah template Docker untuk Drupal 11, dirancang untuk pengembangan 
 Panduan lengkap untuk upgrade dari Drupal 8/9/10 atau migrasi ke environment ini dapat dilihat di:
 👉 **[Panduan Migrasi & Upgrade (MIGRATION.md)](MIGRATION.md)**
 
+### 📚 Dokumentasi Modul & Konfigurasi
+Detail lengkap mengenai modul yang terinstal (Headless, Scheduler, dll) dan konfigurasi `.env` dapat dilihat di:
+👉 **[Dokumentasi Modul & Konfigurasi (MODULES_CONFIG.md)](MODULES_CONFIG.md)**
+
 ---
 
 ## 📂 Struktur Proyek & Engines
