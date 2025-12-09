@@ -1,0 +1,20 @@
+uuid: c3467d48-df93-4c07-a48e-b06560d14a61
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.remote_video
+  module:
+    - options
+id: media.remote_video.publish_state
+field_name: publish_state
+entity_type: media
+bundle: remote_video
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

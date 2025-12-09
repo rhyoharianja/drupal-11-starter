@@ -1,0 +1,18 @@
+uuid: be34919c-09a3-4de5-ab68-8cc408db23a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.document
+id: media.document.publish_on
+field_name: publish_on
+entity_type: media
+bundle: document
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

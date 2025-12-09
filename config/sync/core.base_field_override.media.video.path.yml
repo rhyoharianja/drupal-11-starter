@@ -1,0 +1,20 @@
+uuid: afc17344-481c-4524-a0bd-c5886d9fd5b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.video
+  module:
+    - path
+id: media.video.path
+field_name: path
+entity_type: media
+bundle: video
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

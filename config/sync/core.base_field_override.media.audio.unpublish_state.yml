@@ -1,0 +1,20 @@
+uuid: 08a3d198-c565-44e4-a5c1-0b4ab7c1a456
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.audio
+  module:
+    - options
+id: media.audio.unpublish_state
+field_name: unpublish_state
+entity_type: media
+bundle: audio
+label: 'Unpublish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

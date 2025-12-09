@@ -1,0 +1,20 @@
+uuid: dc16afb1-5a77-47b3-8058-ab85267c3935
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.page
+  module:
+    - options
+id: node.page.publish_state
+field_name: publish_state
+entity_type: node
+bundle: page
+label: 'Publish state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

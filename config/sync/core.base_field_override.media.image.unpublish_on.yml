@@ -1,0 +1,18 @@
+uuid: 5c6b4bfb-da7f-4318-a70b-65a89f2ed238
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.image
+id: media.image.unpublish_on
+field_name: unpublish_on
+entity_type: media
+bundle: image
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
