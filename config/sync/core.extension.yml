@@ -76,6 +76,8 @@ module:
   path_alias: 0
   pgsql: 0
   phpass: 0
+  purge: 0
+  purge_tokens: 0
   rest: 0
   rules: 0
   scheduler: 0
@@ -94,6 +96,10 @@ module:
   typed_data: 0
   update: 0
   user: 0
+  varnish_focal_point_purge: 0
+  varnish_image_purge: 0
+  varnish_purge_tags: 0
+  varnish_purger: 0
   views_ui: 0
   workflows: 0
   pathauto: 1

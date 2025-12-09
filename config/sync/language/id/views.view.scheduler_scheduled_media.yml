@@ -5,6 +5,9 @@ display:
         status:
           label: Status
       filters:
+        bundle:
+          expose:
+            label: Type
         status:
           expose:
             label: Status

@@ -32,10 +32,13 @@
         "drupal/jsonapi_extras": "^3",
         "drupal/metatag": "^2",
         "drupal/pathauto": "^1",
+        "drupal/purge": "^3.6",
+        "drupal/redis": "^1.11",
         "drupal/rules": "^4",
         "drupal/scheduler": "^2",
         "drupal/scheduler_content_moderation_integration": "^3",
         "drupal/simple_oauth": "^6",
+        "drupal/varnish_purge": "^2.3",
         "drush/drush": "^13"
     },
     "require-dev": {

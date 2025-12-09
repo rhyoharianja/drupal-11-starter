@@ -74,6 +74,98 @@ Direktori `engines/` berisi file konfigurasi dan skrip yang menjalankan environm
 
 ---
 
+## ⚡ Varnish Cache & High Performance
+
+Template ini mencakup integrasi Varnish Cache yang terotomatisasi untuk pengiriman konten berkinerja tinggi (High Performance Delivery).
+
+### Arsitektur
+- **Varnish (Frontend)**: Mendengarkan pada port `VARNISH_PORT` (default: 8082). Menerima request dari klien.
+- **Nginx (Backend)**: Mendengarkan pada port `NGINX_PORT` (default: 8081). Hanya dapat diakses melalui Varnish (atau langsung untuk debugging).
+- **PHP-FPM**: Memproses request dinamis dari Nginx.
+
+### Konfigurasi (.env)
+Aktifkan Varnish dengan mengatur variabel berikut di file `.env`:
+
+```bash
+USE_VARNISH=true
+VARNISH_PORT=8082
+NGINX_PORT=8081
+```
+
+### Otomatisasi
+Saat `USE_VARNISH=true`, skrip `start.sh` akan secara otomatis:
+1.  Mengaktifkan modul **`purge`** dan **`varnish_purger`**.
+2.  Membuat instance purger Varnish (`drush p:purger-add varnish`).
+3.  Mengimpor konfigurasi Drupal yang diperlukan.
+
+### File Konfigurasi
+- **VCL**: `engines/varnish/default.vcl` - Konfigurasi Varnish yang dioptimalkan untuk Drupal (mendukung Cache Tags, Ban, Purge).
+
+### Verifikasi
+Untuk memverifikasi Varnish bekerja:
+```bash
+curl -I http://localhost:8082
+```
+Periksa header respons:
+- `X-Cache: HIT` atau `MISS`
+- `X-Varnish: <id>`
+
+---
+
+## ⚡ Redis Caching
+
+Template ini mendukung integrasi Redis sebagai backend cache untuk performa tinggi.
+
+### Konfigurasi (.env)
+Aktifkan dan konfigurasi Redis di file `.env`:
+
+```bash
+USE_REDIS=true
+REDIS_HOST=172.17.0.4
+REDIS_PORT=6379
+REDIS_PASSWORD=your_redis_password
+REDIS_PREFIX=aleph-redis  # Prefix kustom untuk key Redis
+```
+
+### Otomatisasi
+Saat `USE_REDIS=true`, skrip `start.sh` akan:
+1.  Mengaktifkan modul **`redis`**.
+2.  Mengonfigurasi `settings.php` untuk menggunakan Redis sebagai default cache backend.
+3.  Menggunakan prefix yang didefinisikan di `REDIS_PREFIX` (default: `drupal`).
+
+### Verifikasi
+Untuk memverifikasi koneksi Redis:
+```bash
+docker compose exec php vendor/bin/drush p:eval "echo \Drupal\Core\Site\Settings::get('cache_prefix');"
+# Output harus sesuai dengan REDIS_PREFIX Anda
+```
+
+---
+
+## 🔧 Referensi Variabel Environment (.env)
+
+Berikut adalah variabel kunci yang dapat Anda konfigurasi di `.env`:
+
+| Variabel | Deskripsi | Default |
+| :--- | :--- | :--- |
+| **Database** | | |
+| `POSTGRES_DB` | Nama database | `aleph-drupal` |
+| `POSTGRES_USER` | User database | `admin` |
+| `POSTGRES_PASSWORD` | Password database | `admin` |
+| `POSTGRES_HOST` | Host database (IP/Hostname) | `172.17.0.2` |
+| **Aplikasi** | | |
+| `SITE_NAME` | Nama situs Drupal | `Drupal 11 Docker` |
+| `HASH_SALT` | Salt untuk keamanan (Wajib diubah) | `development-only...` |
+| `ERROR_LEVEL` | Level error reporting (`verbose`, `hide`) | `verbose` |
+| **Layanan** | | |
+| `USE_VARNISH` | Aktifkan Varnish Cache | `true` |
+| `VARNISH_PORT` | Port publik Varnish | `8082` |
+| `NGINX_PORT` | Port publik Nginx | `8081` |
+| `USE_REDIS` | Aktifkan Redis Cache | `true` |
+| `REDIS_PREFIX` | Prefix key Redis | `drupal` |
+
+---
+
 ## 📦 Modul Composer
 
 Proyek ini menggunakan Composer untuk mengelola core Drupal dan dependensinya.

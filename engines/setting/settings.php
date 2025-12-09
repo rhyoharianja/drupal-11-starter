@@ -57,6 +57,25 @@ $settings['entity_update_batch_size'] = (int) (getenv('ENTITY_UPDATE_BATCH_SIZE'
 $settings['entity_update_backup'] = filter_var(getenv('ENTITY_UPDATE_BACKUP') ?: TRUE, FILTER_VALIDATE_BOOLEAN);
 $settings['migrate_node_migrate_type_classic'] = filter_var(getenv('MIGRATE_NODE_MIGRATE_TYPE_CLASSIC') ?: FALSE, FILTER_VALIDATE_BOOLEAN);
 
+/**
+ * Redis Configuration
+ */
+if (getenv('USE_REDIS') === 'true') {
+  $settings['redis.connection']['interface'] = 'PhpRedis';
+  $settings['redis.connection']['host'] = getenv('REDIS_HOST') ?: '172.17.0.4';
+  $settings['redis.connection']['port'] = getenv('REDIS_PORT') ?: '6379';
+  
+  if (getenv('REDIS_PASSWORD')) {
+    $settings['redis.connection']['password'] = getenv('REDIS_PASSWORD');
+  }
+
+  $settings['cache_prefix'] = getenv('REDIS_PREFIX') ?: 'drupal';
+
+  $settings['cache']['default'] = 'cache.backend.redis';
+  $settings['container_yamls'][] = 'modules/contrib/redis/example.services.yml';
+  $settings['container_yamls'][] = 'modules/contrib/redis/redis.services.yml';
+}
+
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }

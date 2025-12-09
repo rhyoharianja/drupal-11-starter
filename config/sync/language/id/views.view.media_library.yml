@@ -4,3 +4,5 @@ display:
       fields:
         edit_media:
           text: Edit
+        delete_media:
+          text: Delete
